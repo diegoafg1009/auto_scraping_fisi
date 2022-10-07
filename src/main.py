@@ -1,24 +1,54 @@
 from classes import *
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 
 
-PATH = "C:\Program Files (x86)\chromedriver.exe"
-options = Options()
-options.add_argument('--headless')
-options.add_argument('--disable-gpu')
-driver = webdriver.Chrome(service=Service(PATH), options=options)
-# # driver = webdriver.Chrome(service=Service(PATH))
-driver.get("https://neoauto.com/")
+def menu():
+    while True:
+        print("Bienvenido")
+        print("==========")
+        print("1. Iniciar Sesion")
+        print("2. Registrarse")
+        print("3. Salir")
+        option = int(input("Ingrese una opcion: "))
+        if option == 1:
+            user_name = input("Ingrese su nombre de usuario: ")
+            password = input("Ingrese su contrasenia: ")
+            if user_name == "admin" and password == "admin":
+                sub_menu()
+        elif option == 2:
+            print("Opcion sin implementar, las credenciales de ingreso son: admin, admin")
+        elif option == 3:
+            print("Hasta pronto")
+            # input("Presione Enter para continuar")
+            break
+        else:
+            print("Esa opcion no existe, intentelo de nuevo")
+            # input("Presione Enter para continuar")
 
-driver.find_element(By.XPATH, value="/html/body/section[2]/div/div[2]/form/div/div[1]/div/div[3]/label").click()
 
-print(driver.title)
+def sub_menu():
+    while True:
+        print("Auto-Scraping FISI")
+        print("==================")
+        print("1. Realizar Busqueda")
+        print("2. Cerrar Sesion")
+        option = int(input("Ingrese una opcion: "))
+        if option == 1:
+            print("Ingrese los datos de su auto: ")
+            search1 = SearchNeoAuto.input_attributes()
+            autos = search1.get_autos()
+            for auto in autos:
+                print(f"Marca: {auto.get_brand()}\n Modelo: {auto.get_model()}\n Anio: {auto.get_year()} \n"
+                      f" precio: {auto.get_price()} \n url: {auto.get_url()}")
+
+        elif option == 2:
+            print("Cerrando sesión...")
+            # input("Presione Enter para continuar")
+            break
+        else:
+            print("Esa opcion no existe, intentelo de nuevo")
+            # input("Presione Enter para continuar")
 
 
+if __name__ == '__main__':
+    menu()
 

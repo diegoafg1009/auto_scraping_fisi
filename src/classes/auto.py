@@ -1,15 +1,11 @@
 class Auto:
 
-    def __init__(self, name: str, year: int, brand: str, model: str, price: int, url: str):
-        self.__name = name
-        self.__year = year  # private
+    def __init__(self, brand: str, model: str, year: int, price: int, url: str):
         self.__brand = brand
         self.__model = model
+        self.__year = year
         self.__price = price
         self.__url = url
-
-    def get_name(self):
-        return self.__name
 
     def get_year(self):
         return self.__year
@@ -25,3 +21,4 @@ class Auto:
 
     def get_url(self):
         return self.__url
+

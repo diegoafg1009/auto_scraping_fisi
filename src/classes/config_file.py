@@ -11,4 +11,7 @@ class ConfigFile:
         pass
 
     def save_info_auto(self, filename):
+        pass
+
     def get_info_auto(self, fileName):
+        pass
