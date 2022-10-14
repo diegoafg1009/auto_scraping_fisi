@@ -20,11 +20,11 @@ class SearchNeoAuto(Search):
         self.autos = []
 
     def __filter(self):
-        # options = Options()
-        # options.add_argument('--headless')
-        # options.add_argument('--disable-gpu')
-        # self.__driver = webdriver.Chrome(service=Service(self.__path), options=options)
-        self.__driver = webdriver.Chrome(service=Service(self.__path))
+        options = Options()
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+        self.__driver = webdriver.Chrome(service=Service(self.__path), options=options)
+        # self.__driver = webdriver.Chrome(service=Service(self.__path))
         self.__driver.get(self.__site)
         self.__driver.find_element(By.XPATH, value="//label[@for = 'vehicleOthers']").click()
 
