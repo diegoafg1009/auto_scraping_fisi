@@ -1,6 +1,5 @@
 from classes import *
 
-
 def menu():
     while True:
         print("Bienvenido")
@@ -24,13 +23,13 @@ def menu():
             print("Esa opcion no existe, intentelo de nuevo")
             # input("Presione Enter para continuar")
 
-
 def sub_menu():
     while True:
         print("Auto-Scraping FISI")
         print("==================")
-        print("1. Realizar Busqueda")
-        print("2. Cerrar Sesion")
+        print("1. Realizar Busqueda Neoauto")  # change
+        print("2. Realizar Busqueda Kavak")  # change
+        print("3. Cerrar Sesion")
         option = int(input("Ingrese una opcion: "))
         if option == 1:
             print("Ingrese los datos de su auto: ")
@@ -39,8 +38,13 @@ def sub_menu():
             for auto in autos:
                 print(f"Marca: {auto.get_brand()}\n Modelo: {auto.get_model()}\n Anio: {auto.get_year()} \n"
                       f" precio: {auto.get_price()} \n url: {auto.get_url()}")
-
         elif option == 2:
+            search2 = SearchKavak.input_attributes()
+            autos2 = search2.get_autos()
+            for car in autos2:
+                print(f"Marca: {car.get_brand()}\n Modelo: {car.get_model()}\n Anio/km/ciudad: {car.get_year()} \n"
+                      f" Precio: {car.get_price()} \n url: {car.get_url()}")
+        elif option == 3:
             print("Cerrando sesión...")
             # input("Presione Enter para continuar")
             break
@@ -48,6 +52,7 @@ def sub_menu():
             print("Esa opcion no existe, intentelo de nuevo")
             # input("Presione Enter para continuar")
 
-
 if __name__ == '__main__':
     menu()
+
+
