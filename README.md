@@ -20,7 +20,7 @@
         - El año
      - El programa emperazara su ejecucion, culminando con la entrega de los datos en orden decendente, desde el que tenga menor precio hasta el mayor.
      - Esta informacion sera guardada en el historial del usuario.
-     - Podra salir del programa
+ - El usuario podra salir del programa
 
 
 ### Proyecto Final del grupo 6 del curso de Algorítmica 2, de la facultada de Ingeniería de Sistema e Informática de la UNMSM.
