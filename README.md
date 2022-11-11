@@ -8,18 +8,18 @@
 - 👩‍💻 Villanueva Chirito, Mariano [@Marianoavc](https://github.com/Marianoavc)
 
 ### Pasos:
-- Descargar el ChromeDriver, dependiendo de la version de Chrome que tenga. [Link_Descarga_ChromeDriver](https://chromedriver.chromium.org/downloads)
+- Descargar el ChromeDriver, dependiendo de la versión de Chrome que tenga. [Link_Descarga_ChromeDriver](https://chromedriver.chromium.org/downloads)
 - Poner el lugar de descarga en el constructor. Ejemplo: `self.__path = "C:\Program Files (x86)\chromedriver.exe"`
-- El usuario podra registrarse.
-- El usuario podra ingresar con su cuenta.
-     - El usuario ingresara al menu de opciones, para escoger en que pagina se realizara la web scraping.
-     - El usuario ingresara:
+- El usuario podrá registrarse.
+- El usuario podrá ingresar con su cuenta.
+     - El usuario ingresará al menú de opciones, para escoger en que página se realizará la web scraping.
+     - El usuario ingresará:
         - La marca
         - El modelo
         - El año
-     - El programa emperazara su ejecucion, culminando con la entrega de los datos en orden decendente, desde el que tenga menor precio hasta el mayor.
-     - Esta informacion sera guardada en el historial del usuario.
- - El usuario podra salir del programa.
+     - El programa emperazará su ejecución, culminando con la entrega de los datos en orden decendente, desde el que tenga menor precio hasta el mayor.
+     - Esta información sera guardada en el historial del usuario.
+ - El usuario podrá salir del programa.
 
 <h3 align="left">Languages and Tools:</h3>
 <p align="left"> <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> <a href="https://www.selenium.dev" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/detain/svg-logos/780f25886640cef088af994181646db2f6b1a3f8/svg/selenium-logo.svg" alt="selenium" width="40" height="40"/> </a> </p>
