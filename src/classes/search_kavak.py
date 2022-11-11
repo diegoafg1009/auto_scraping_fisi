@@ -11,7 +11,7 @@ import time
 class SearchKavak():
 
     def __init__(self, brand: str, model: str, quantity: int):
-        self._brand = brand.lower()
+        self._brand = brand.capitalize()
         self._model = model.capitalize()
         self._quantity = quantity
         self.__path = "C:\Program Files (x86)\chromedriver.exe"
@@ -21,26 +21,23 @@ class SearchKavak():
 
     def __filter(self):
         options = Options()
-        options.add_argument('--headless')
+        #options.add_argument('--headless')
         options.add_argument("--window-size=1920,1080")
-        options.add_argument('--disable-gpu')
         self.__driver = webdriver.Chrome(service=Service(self.__path), options=options)
         self.__driver.get(self.__site)
-        time.sleep(10)
+        time.sleep(15)
 
-        car_searched = (self._brand + " " + self._model).lower()
-        search_box = self.__driver.find_element(By.ID, "input-search-catalogue")
-        search_box.send_keys(car_searched)
-
-        wait = WebDriverWait(self.__driver, 15)
-        wait.until(ec.element_to_be_clickable((By.XPATH, "//button[@data-cy='btn-input-search-main']"))).click()
+        wait = WebDriverWait(self.__driver, 10)
+        wait.until(ec.element_to_be_clickable((By.XPATH, "//h3[@data-cy='btn-accordion-marca-y-modelo']"))).click()
+        wait.until(ec.element_to_be_clickable((By.XPATH, f"//img[@alt='{self._brand}']"))).click()
+        wait.until(ec.element_to_be_clickable((By.XPATH, f"//button[@aria-label='Select {self._model}']"))).click()
         wait.until(ec.element_to_be_clickable((By.XPATH, "//span[@class='select-value catalogue']"))).click()
         wait.until(ec.element_to_be_clickable((By.XPATH, "//button[@aria-label='lowerPrice']"))).click()
-        time.sleep(5)
+        time.sleep(3)
 
     def __get_url(self):
         elements_with_urls = self.__driver.find_elements(
-            By.XPATH, value="//div[@class='col-sm-6 col-car col-xl-4']//app-card-car//a[@class='card-inner']")
+            By.XPATH, value="//a[@class='card-inner']")
         urls = [url.get_attribute('href') for url in elements_with_urls]
         return urls
 
