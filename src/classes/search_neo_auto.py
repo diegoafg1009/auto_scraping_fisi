@@ -19,7 +19,7 @@ class SearchNeoAuto(Search):
         self.__driver = None
         self.autos = []
 
-    def __filter(self):
+    def _filter(self):
         options = Options()
         options.add_argument('--headless')
         options.add_argument('--disable-gpu')
@@ -53,7 +53,7 @@ class SearchNeoAuto(Search):
 
     def get_autos(self):
         i = 0
-        self.__filter()
+        self._filter()
         order_by = Select(self.__driver.find_element(By.XPATH, value="//select[@class='c-select__select']"))
         order_by.select_by_visible_text("Menor precio")
         container = self.__driver.find_element(By.XPATH, value="//div[contains(@class, 's-results') and contains(@class, 'js-container')]")

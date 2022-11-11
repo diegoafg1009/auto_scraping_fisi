@@ -33,22 +33,58 @@ def sub_menu():
         print("==================")
         print("1. Realizar Busqueda Neoauto")  # change
         print("2. Realizar Busqueda Kavak")  # change
-        print("3. Cerrar Sesion")
+        print("3. Realizar Busqueda en todas las tiendas")
+        print("4. Cerrar Sesion")
+
         option = int(input("Ingrese una opcion: "))
         if option == 1:
             print("Ingrese los datos de su auto: ")
-            search1 = SearchNeoAuto.input_attributes()
-            autos = search1.get_autos()
+            brand = input("Marca: ")
+            model = input("Modelo: ")
+            from_year = int(input("Anio inicial: "))
+            until_year = int(input("Anio final: "))
+            quantity = int(input("Cantidad de resultados por buscador: "))
+
+            search = SearchNeoAuto(brand, model, from_year, until_year, quantity)
+
+            autos = search.get_autos()
             for auto in autos:
                 print(f"Marca: {auto.get_brand()}\n Modelo: {auto.get_model()}\n Anio: {auto.get_year()} \n"
                       f" precio: {auto.get_price()} \n url: {auto.get_url()}")
+            print(f"Se encontraron {len(autos)} resultados.")
         elif option == 2:
-            search2 = SearchKavak.input_attributes()
-            autos2 = search2.get_autos()
-            for car in autos2:
-                print(f"Marca: {car.get_brand()}\n Modelo: {car.get_model()}\n Anio/km/ciudad: {car.get_year()} \n"
+            print("Ingrese los datos de su auto: ")
+            brand = input("Marca: ")
+            model = input("Modelo: ")
+            from_year = int(input("Anio inicial: "))
+            until_year = int(input("Anio final: "))
+            quantity = int(input("Cantidad de resultados por buscador: "))
+
+            search = SearchKavak(brand, model, from_year, until_year, quantity)
+            autos = search.get_autos()
+            for car in autos:
+                print(f"Marca: {car.get_brand()}\n Modelo: {car.get_model()}\n Anio: {car.get_year()} \n"
                       f" Precio: {car.get_price()} \n url: {car.get_url()}")
+            print(f"Se encontraron {len(autos)} resultados.")
         elif option == 3:
+            autos = []
+            print("Ingrese los datos de su auto: ")
+            brand = input("Marca: ")
+            model = input("Modelo: ")
+            from_year = int(input("Anio inicial: "))
+            until_year = int(input("Anio final: "))
+            quantity = int(input("Cantidad de resultados por buscador: "))
+
+            searchers = [SearchNeoAuto(brand, model, from_year, until_year, quantity), SearchKavak(brand, model, from_year, until_year, quantity)]
+            for search in searchers:
+                autos.extend(search.get_autos())
+            for car in autos:
+                print(f"Marca: {car.get_brand()}\n Modelo: {car.get_model()}\n Anio: {car.get_year()} \n"
+                      f" Precio: {car.get_price()} \n url: {car.get_url()}")
+
+            print(f"Se encontraron {len(autos)} resultados.")
+
+        elif option == 4:
             print("Cerrando sesión...")
             # input("Presione Enter para continuar")
             break
