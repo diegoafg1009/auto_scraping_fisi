@@ -1,11 +1,11 @@
 ### Auto Scraping Fisi
 
 ### Integrantes:
-- Álvarez More, Diego
-- Dávila Vásquez, Rodrigo Estéfano
-- Falla Gallegos, Diego André
-- Tupac Agüero, Kevin
-- Villanueva Chirito, Mariano
+- Álvarez More, Diego [@diegoam11](https://github.com/diegoam11)
+- Dávila Vásquez, Rodrigo Estéfano [@RodrigoDV03](https://github.com/RodrigoDV03)
+- Falla Gallegos, Diego André [@diegoafg1009](https://github.com/diegoafg1009)
+- Tupac Agüero, Kevin [@Jonathan101120](https://github.com/Jonathan101120)
+- Villanueva Chirito, Mariano [@Marianoavc](https://github.com/Marianoavc)
 
 ### Pasos:
 - Descargar el ChromeDriver, dependiendo de la version de Chrome que tenga. [Link_Descarga_ChromeDriver](https://chromedriver.chromium.org/downloads)
