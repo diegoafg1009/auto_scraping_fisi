@@ -1,0 +1,25 @@
+{
+    "user_details": [
+        {
+            "first_name": "Rodrigo",
+            "last_name": "Davila",
+            "user_name": "RodrigoDV03",
+            "email": "rodrigo@hotmail.com",
+            "password": "rodrigo123"
+        },
+        {
+            "first_name": "Juan",
+            "last_name": "Perez",
+            "user_name": "JuanPerez123",
+            "email": "juanperez@hotmail.com",
+            "password": "juan123"
+        },
+        {
+            "name": "Pepito",
+            "last_name": "Grillo",
+            "user_name": "pepe",
+            "email": "pepe@hotmail.com",
+            "password": "abcd1234"
+        }
+    ]
+}

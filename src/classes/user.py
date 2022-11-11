@@ -1,3 +1,5 @@
+from .config_file import ConfigFile
+
 class User:
     def __init__(self, first_name: str, last_name: str, user_name: str, password: str, email: str):
         self.__first_name = first_name
@@ -6,13 +8,18 @@ class User:
         self.__password = password
         self.__email = email
 
-    @classmethod
-    def register(cls):
+    @staticmethod
+    def register():
         first_name = input("Ingrese sus nombres: ")
         last_name = input("Ingrese sus apellidos: ")
-        user_name = input("Ingrese su contrasenia: ")
+        user_name = input("Ingrese su nombre de usuario: ")
         email = input("Ingrese su email: ")
-        cls(first_name, last_name, user_name, email)
+        password = input("Ingrese su contrasenia: ")
+        
+        newUser = {"name": first_name, "last_name": last_name, "user_name": user_name, "email": email, "password": password}
+        fileUserName = "usuario.json"
+        ConfigFile.save_user(newUser, fileUserName)
+        
 
     def login(self):
         user_name = input()

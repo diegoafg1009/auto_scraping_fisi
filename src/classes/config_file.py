@@ -1,11 +1,15 @@
-from user import User
+import json
 
 class ConfigFile:
     def __int__(self):
         __path = ""
-
-    def save_info_user(self, fileName: str, user: User):
-        pass
+    @staticmethod
+    def save_user(newJsonUser, fileName):
+        with open(fileName, 'r+') as file:
+            newJson = json.load(file)
+            newJson["user_details"].append(newJsonUser)
+            file.seek(0)
+            json.dump(newJson, file, indent=4)
 
     def get_info_user(self, fileName: str):
         pass
@@ -15,3 +19,5 @@ class ConfigFile:
 
     def get_info_auto(self, fileName):
         pass
+    
+    
