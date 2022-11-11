@@ -1,7 +1,10 @@
+import uuid
 from .config_file import ConfigFile
 
+
 class User:
-    def __init__(self, first_name: str, last_name: str, user_name: str, password: str, email: str):
+    def __init__(self, id: str, first_name: str, last_name: str, user_name: str, password: str, email: str):
+        self.__id = id
         self.__first_name = first_name
         self.__last_name = last_name
         self.__user_name = user_name
@@ -10,20 +13,25 @@ class User:
 
     @staticmethod
     def register():
+        id = str(uuid.uuid1())
         first_name = input("Ingrese sus nombres: ")
         last_name = input("Ingrese sus apellidos: ")
         user_name = input("Ingrese su nombre de usuario: ")
         email = input("Ingrese su email: ")
         password = input("Ingrese su contrasenia: ")
+        new_user = {"id": id, "first_name": first_name, "last_name": last_name, "user_name": user_name, "email": email, "password": password}
+        ConfigFile.save_user(new_user)
         
-        newUser = {"name": first_name, "last_name": last_name, "user_name": user_name, "email": email, "password": password}
-        fileUserName = "usuario.json"
-        ConfigFile.save_user(newUser, fileUserName)
-        
+    @staticmethod
+    def login():
+        user_name = input("Ingrese su nombre de usuario: ")
+        password = input("Ingrese su contrasenia: ")
+        users = ConfigFile.get_users()
+        for user in users:
+            if user["user_name"] == user_name and user["password"] == password:
+                return True
 
-    def login(self):
-        user_name = input()
-        contrasenia = input()
+
 
 
     def modify_data(self):

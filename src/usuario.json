@@ -1,25 +1,18 @@
-{
-    "user_details": [
-        {
-            "first_name": "Rodrigo",
-            "last_name": "Davila",
-            "user_name": "RodrigoDV03",
-            "email": "rodrigo@hotmail.com",
-            "password": "rodrigo123"
-        },
-        {
-            "first_name": "Juan",
-            "last_name": "Perez",
-            "user_name": "JuanPerez123",
-            "email": "juanperez@hotmail.com",
-            "password": "juan123"
-        },
-        {
-            "name": "Pepito",
-            "last_name": "Grillo",
-            "user_name": "pepe",
-            "email": "pepe@hotmail.com",
-            "password": "abcd1234"
-        }
-    ]
-}
+[
+    {
+        "id": "eff50488-6186-11ed-92a0-9c29763415fb",
+        "first_name": "b",
+        "last_name": "b",
+        "user_name": "b",
+        "email": "b",
+        "password": "b"
+    },
+    {
+        "id": "fba2e2e8-6186-11ed-83bd-9c29763415fb",
+        "first_name": "v",
+        "last_name": "v",
+        "user_name": "v",
+        "email": "v",
+        "password": "v"
+    }
+]

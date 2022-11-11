@@ -1,5 +1,6 @@
 from classes import *
 
+
 def menu():
     while True:
         print("Bienvenido")
@@ -9,10 +10,10 @@ def menu():
         print("3. Salir")
         option = int(input("Ingrese una opcion: "))
         if option == 1:
-            user_name = input("Ingrese su nombre de usuario: ")
-            password = input("Ingrese su contrasenia: ")
-            if user_name == "admin" and password == "admin":
+            if User.login() == True:
                 sub_menu()
+            else:
+                print("No existe el usuario")
         elif option == 2:
             # print("Opcion sin implementar, las credenciales de ingreso son: admin, admin")
             print("Ingrese sus datos: ")
