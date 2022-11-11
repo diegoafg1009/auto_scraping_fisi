@@ -9,7 +9,7 @@
 
 ### Pasos:
 - Descargar el ChromeDriver, dependiendo de la version de Chrome que tenga. [Link_Descarga_ChromeDriver](https://chromedriver.chromium.org/downloads)
-- Poner el lugar de descarga en el constructor. Ejemplo: self.__path = "C:\Program Files (x86)\chromedriver.exe"
+- Poner el lugar de descarga en el constructor. Ejemplo: `self.__path = "C:\Program Files (x86)\chromedriver.exe"`
 - El usuario podra registrarse.
 - El usuario podra ingresar con su cuenta.
      - El usuario ingresara al menu de opciones, para escoger en que pagina se realizara la web scraping.
