@@ -2,7 +2,7 @@ import json
 
 
 class ConfigFile:
-    USER_PATH = "src/usuario.json"
+    USER_PATH = "usuario.json"
 
     @staticmethod
     def save_user(new_json_user):

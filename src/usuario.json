@@ -14,5 +14,13 @@
         "user_name": "v",
         "email": "v",
         "password": "v"
+    },
+    {
+        "id": "b582f168-618d-11ed-ad15-20cf305eecd0",
+        "first_name": "Rodrigo Estefano",
+        "last_name": "Davila Vasquez",
+        "user_name": "rodrigo123",
+        "email": "rodrigo@gmail.com",
+        "password": "123456"
     }
 ]
