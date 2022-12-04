@@ -19,7 +19,7 @@
         - El modelo
         - El año
      - El programa emperazará su ejecución, culminando con la entrega de los datos en orden decendente, desde el que tenga menor precio hasta el mayor.
-     - Esta información sera guardada en el historial del usuario.
+     - Esta información sera guardada en el historial del usuario, este podrá ser visto.
  - El usuario podrá salir del programa.
 
 ### Languages and Tools:
