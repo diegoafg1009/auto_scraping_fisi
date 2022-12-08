@@ -14,7 +14,6 @@ class SearchNeoAuto(Search):
 
     def __init__(self, brand: str, model: str, from_year: int, until_year: int, quantity: int):
         Search.__init__(self, brand, model, from_year, until_year, quantity)
-        self.__path = "C:\Program Files (x86)\chromedriver.exe"
         self.__site = "https://neoauto.com/"
         self.__driver = None
         self.autos = []
@@ -23,7 +22,7 @@ class SearchNeoAuto(Search):
         options = Options()
         options.add_argument('--headless')
         options.add_argument('--disable-gpu')
-        self.__driver = webdriver.Chrome(service=Service(self.__path), options=options)
+        self.__driver = webdriver.Chrome(service=Service(self._path), options=options)
         # self.__driver = webdriver.Chrome(service=Service(self.__path))
         self.__driver.get(self.__site)
         self.__driver.find_element(By.XPATH, value="//label[@for = 'vehicleOthers']").click()
@@ -68,6 +67,7 @@ class SearchNeoAuto(Search):
                 url = url.get_attribute('href')
                 title = article.find_element(By.CSS_SELECTOR, value="div[class='c-results-used__header']")
                 title = title.text.rsplit(" ", 1)
+                print(title)
                 year = int(title[1])
                 price = article.find_element(By.CSS_SELECTOR, value="strong[class='c-results-used__price--black']")
                 price = price.text

@@ -15,7 +15,6 @@ class SearchAutopia(Search):
         self._brand = brand.lower()
         self._model = model.capitalize()
         self._quantity = quantity
-        self.__path = "C:\Program Files (x86)\chromedriver.exe"
         self.__site = "https://www.autopia.pe/resultados"
         self.__driver = None
         self.autos = []
@@ -24,7 +23,7 @@ class SearchAutopia(Search):
         options = webdriver.ChromeOptions()
         options.add_argument('--start-maximized')
         options.add_argument('--start-extensions')
-        self.__driver = webdriver.Chrome(service=Service(self.__path), options=options)
+        self.__driver = webdriver.Chrome(service=Service(self._path), options=options)
         self.__driver.get(self.__site)
         time.sleep(10)
 

@@ -13,14 +13,13 @@ class SearchKavak(Search):
 
     def __init__(self, brand: str, model: str, from_year: int, until_year: int, quantity: int):
         Search.__init__(self, brand, model, from_year, until_year, quantity)
-        self.__path = "C:\Program Files (x86)\chromedriver.exe"
         self.__site = "https://www.kavak.com/pe/carros-usados"
         self.__driver = None
         self.autos = []
 
     def _filter(self):
         options = Options()
-        options.add_argument('--headless')
+        #options.add_argument('--headless')
         options.add_argument("--window-size=1920,1080")
         self.__driver = webdriver.Chrome(service=Service(self.__path), options=options)
         self.__driver.get(self.__site)
