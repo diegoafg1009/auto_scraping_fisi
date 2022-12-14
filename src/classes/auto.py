@@ -1,3 +1,6 @@
+import uuid
+from .config_file import ConfigFile
+
 class Auto:
 
     def __init__(self, brand: str, model: str, year: int, price: int, url: str):
@@ -21,4 +24,16 @@ class Auto:
 
     def get_url(self):
         return self.__url
+
+    def add_favorite(self):
+        id = str(uuid.uuid1())
+        brand = str(self.__brand)
+        model = str(self.__model)
+        year = self.__year
+        price = self.__price
+        url = str(self.__url)
+        new_favorite = {"id": id, "brand": brand, "model": model, "year": year, "price": price, "url": url}
+        ConfigFile.save_favorite(new_favorite)
+
+
 

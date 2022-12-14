@@ -1,0 +1,26 @@
+[
+    {
+        "id": "e03f90a5-7b68-11ed-b8f7-d43d7e64b297",
+        "brand": "toyota",
+        "model": "yaris",
+        "year": "2022",
+        "price": "16.400",
+        "url": "https://www.kavak.com/pe/toyota-yaris-13-gli-2022-carros-usados-202017"
+    },
+    {
+        "id": "259808bd-7b6b-11ed-b4a0-d43d7e64b297",
+        "brand": "kia",
+        "model": "picanto",
+        "year": 2015,
+        "price": "US$ 7,800",
+        "url": "https://neoauto.com/auto/usado/kia-picanto-2015-1689088"
+    },
+    {
+        "id": "d5d5958a-7b6c-11ed-95c4-d43d7e64b297",
+        "brand": "nissan",
+        "model": "sentra",
+        "year": 2016,
+        "price": "US$ 11,900",
+        "url": "https://neoauto.com/auto/usado/nissan-sentra-2016-1685734"
+    }
+]

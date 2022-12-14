@@ -26,7 +26,6 @@ def menu():
             print("Esa opcion no existe, intentelo de nuevo")
             # input("Presione Enter para continuar")
 
-
 def sub_menu():
     while True:
         print("Auto-Scraping FISI")
@@ -34,7 +33,8 @@ def sub_menu():
         print("1. Realizar Busqueda Neoauto")  # change
         print("2. Realizar Busqueda Kavak")  # change
         print("3. Realizar Busqueda en todas las tiendas")
-        print("4. Cerrar Sesion")
+        print("4. Mis favoritos")
+        print("5. Cerrar Sesion")
 
         option = int(input("Ingrese una opcion: "))
         if option == 1:
@@ -48,11 +48,22 @@ def sub_menu():
             search = SearchNeoAuto(brand, model, from_year, until_year, quantity)
 
             autos = search.get_autos()
+
             if autos is not None:
                 for auto in autos:
                     print(f"Marca: {auto.get_brand()}\n Modelo: {auto.get_model()}\n Anio: {auto.get_year()} \n"
                           f" precio: {auto.get_price()} \n url: {auto.get_url()}")
                 print(f"Se encontraron {len(autos)} resultados.")
+
+            for auto in autos:
+                print(f"Marca: {auto.get_brand()}\n Modelo: {auto.get_model()}\n Anio: {auto.get_year()} \n"
+                      f" precio: {auto.get_price()} \n url: {auto.get_url()}")
+            print(f"Se encontraron {len(autos)} resultados.")
+            answer = input("Desea agregar un auto a sus favoritos?(s/n)")
+            if answer == 's' or answer == 'S':
+                id = int(input('Ingrese el id del auto: '))
+                autos[id - 1].add_favorite()
+
         elif option == 2:
             print("Ingrese los datos de su auto: ")
             brand = input("Marca: ")
@@ -61,12 +72,17 @@ def sub_menu():
             until_year = int(input("Anio final: "))
             quantity = int(input("Cantidad de resultados por buscador: "))
 
-            search = SearchKavak(brand, model, from_year, until_year, quantity)
+            search = SearchKavak2(brand, model, from_year, until_year, quantity)
             autos = search.get_autos()
             for car in autos:
                 print(f"Marca: {car.get_brand()}\n Modelo: {car.get_model()}\n Anio: {car.get_year()} \n"
                       f" Precio: {car.get_price()} \n url: {car.get_url()}")
             print(f"Se encontraron {len(autos)} resultados.")
+            answer = input("Desea agregar un auto a sus favoritos?(s/n)")
+            if answer == 's' or answer == 'S':
+                id = int(input('Ingrese el id del auto: '))
+                autos[id-1].add_favorite()
+
         elif option == 3:
             autos = []
             print("Ingrese los datos de su auto: ")
@@ -84,15 +100,26 @@ def sub_menu():
                       f" Precio: {car.get_price()} \n url: {car.get_url()}")
 
             print(f"Se encontraron {len(autos)} resultados.")
-
+            answer = input("Desea agregar un auto a sus favoritos?(s/n)")
+            if answer == 's' or answer == 'S':
+                id = int(input('Ingrese el id del auto: '))
+                autos[id - 1].add_favorite()
         elif option == 4:
+            print("Favoritos:")
+            favorites = ConfigFile.get_favorites()
+            for fav in favorites:
+                print(fav['brand'])
+                print(fav['model'])
+                print(fav['year'])
+                print(fav['price'])
+                print(fav['url'])
+        elif option == 5:
             print("Cerrando sesión...")
             # input("Presione Enter para continuar")
             break
         else:
             print("Esa opcion no existe, intentelo de nuevo")
             # input("Presione Enter para continuar")
-
 
 if __name__ == '__main__':
     menu()
