@@ -55,10 +55,6 @@ def sub_menu():
                           f" precio: {auto.get_price()} \n url: {auto.get_url()}")
                 print(f"Se encontraron {len(autos)} resultados.")
 
-            for auto in autos:
-                print(f"Marca: {auto.get_brand()}\n Modelo: {auto.get_model()}\n Anio: {auto.get_year()} \n"
-                      f" precio: {auto.get_price()} \n url: {auto.get_url()}")
-            print(f"Se encontraron {len(autos)} resultados.")
             answer = input("Desea agregar un auto a sus favoritos?(s/n)")
             if answer == 's' or answer == 'S':
                 id = int(input('Ingrese el id del auto: '))
@@ -71,13 +67,13 @@ def sub_menu():
             from_year = int(input("Anio inicial: "))
             until_year = int(input("Anio final: "))
             quantity = int(input("Cantidad de resultados por buscador: "))
-
             search = SearchKavak2(brand, model, from_year, until_year, quantity)
             autos = search.get_autos()
-            for car in autos:
-                print(f"Marca: {car.get_brand()}\n Modelo: {car.get_model()}\n Anio: {car.get_year()} \n"
-                      f" Precio: {car.get_price()} \n url: {car.get_url()}")
-            print(f"Se encontraron {len(autos)} resultados.")
+            if autos is not None:
+                for car in autos:
+                    print(f"Marca: {car.get_brand()}\n Modelo: {car.get_model()}\n Anio: {car.get_year()} \n"
+                          f" Precio: {car.get_price()} \n url: {car.get_url()}")
+                print(f"Se encontraron {len(autos)} resultados.")
             answer = input("Desea agregar un auto a sus favoritos?(s/n)")
             if answer == 's' or answer == 'S':
                 id = int(input('Ingrese el id del auto: '))

@@ -12,17 +12,23 @@ class SearchKavak2(Search):
 
     def __init__(self, brand: str, model: str, from_year: int, until_year: int, quantity: int):
         Search.__init__(self, brand, model, from_year, until_year, quantity)
-        self.__site = "https://www.kavak.com/pe/carros-usados"
+        self.__site = f"https://www.kavak.com/pe/autos-{self._model}/orden-menor-precio/carros-usados"
         self.__driver = None
         self.autos = []
 
     def _filter(self):
         options = Options()
         options.add_argument('--headless')
-        options.add_argument("--window-size=1920,1080")
         self.__driver = webdriver.Chrome(service=Service(self._path), options=options)
         self.__site = self.__get_site_fixed(self._model)
         self.__driver.get(self.__site)
+        try:
+            if self.__verify_brand() is False:
+                print('No se encontro la marca buscada')
+                return False
+        except:
+            print('No se encontro el modelo buscado')
+            return False
 
     def __get_url(self):
         elements_with_urls = self.__driver.find_elements(
@@ -38,7 +44,8 @@ class SearchKavak2(Search):
         for text in prices:
             no_dollar = text.replace('US$ ', '')
             no_dollar_coma = no_dollar.replace(',', '.')
-            new_prices.append(no_dollar_coma)
+            if no_dollar_coma != '':
+                new_prices.append(no_dollar_coma)
         return new_prices
 
     def __get_year(self):
@@ -53,21 +60,23 @@ class SearchKavak2(Search):
 
     def get_autos(self):
         i = 0
-        self._filter()
-        link_list = self.__get_url()
-        price_list = self.__get_price()
-        year_list = self.__get_year()
-        while i < len(price_list):
-            link = link_list[i]
-            price = price_list[i]
-            year = year_list[i]
-            auto = Auto(self._brand, self._model, year, price, link)
-            if (int(auto.get_year()) >= self._from_year) and (int(auto.get_year()) <= self._until_year):
-                self.autos.append(auto)
-            i += 1
-        correct_list = self.__order_by_price(self.autos)
-        correct_list = self.__split_list(correct_list, self._quantity)
-        return correct_list
+        if self._filter() is False:
+            return None
+        else:
+            link_list = self.__get_url()
+            price_list = self.__get_price()
+            year_list = self.__get_year()
+            while i < len(price_list):
+                link = link_list[i]
+                price = price_list[i]
+                year = year_list[i]
+                auto = Auto(self._brand.capitalize(), self._model.capitalize(), year, price, link)
+                if (int(auto.get_year()) >= self._from_year) and (int(auto.get_year()) <= self._until_year):
+                    self.autos.append(auto)
+                i += 1
+            correct_list = self.__order_by_price(self.autos)
+            correct_list = self.__split_list(correct_list, self._quantity)
+            return correct_list
 
     def __order_by_price(self, cars: list):
         less = []
@@ -87,11 +96,22 @@ class SearchKavak2(Search):
             return cars
 
     def __get_site_fixed(self, model: str):
-        site = f"https://www.kavak.com/pe/autos-{model}/orden-menor-precio/carros-usados"
         if ' ' in model:
             words = split(' ', model)
-            site = f"https://www.kavak.com/pe/autos-{words[0]}_{words[1]}/orden-menor-precio/carros-usados"
-        return site
+            self.__site = f"https://www.kavak.com/pe/autos-{words[0]}_{words[1]}/orden-menor-precio/carros-usados"
+        return self.__site
 
     def __split_list(self, objects: list, until):
         return objects[:until]
+
+    def __verify_brand(self):
+        car_name = self.__driver.find_element(By.XPATH, value="//h2[@class='car-name']").text
+        car_name = car_name.split(maxsplit=2)
+        first_part = car_name[0].lower()
+        second_part = car_name[1].lower()
+        complete = first_part + ' ' + second_part
+        self._brand = self._brand.lower()
+        if (self._brand == first_part) or (self._brand == complete):
+            return True
+        else:
+            return False
