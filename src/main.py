@@ -48,10 +48,11 @@ def sub_menu():
             search = SearchNeoAuto(brand, model, from_year, until_year, quantity)
 
             autos = search.get_autos()
-            for auto in autos:
-                print(f"Marca: {auto.get_brand()}\n Modelo: {auto.get_model()}\n Anio: {auto.get_year()} \n"
-                      f" precio: {auto.get_price()} \n url: {auto.get_url()}")
-            print(f"Se encontraron {len(autos)} resultados.")
+            if autos is not None:
+                for auto in autos:
+                    print(f"Marca: {auto.get_brand()}\n Modelo: {auto.get_model()}\n Anio: {auto.get_year()} \n"
+                          f" precio: {auto.get_price()} \n url: {auto.get_url()}")
+                print(f"Se encontraron {len(autos)} resultados.")
         elif option == 2:
             print("Ingrese los datos de su auto: ")
             brand = input("Marca: ")
