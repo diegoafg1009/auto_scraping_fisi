@@ -1,6 +1,5 @@
 import json
 
-
 class ConfigFile:
     USER_PATH = "usuario.json"
     FAVORITE_PATH = "favoritos.json"
@@ -11,11 +10,11 @@ class ConfigFile:
             already_exist = False
             users = json.load(file)
             for user in users:
-                if user["user_name"] == new_json_user["user_name"]:
+                if user["_User__user_name"] == new_json_user["_User__user_name"]:
                     already_exist = True
                     print("Lo sentimos, el nombre de usuario ingresado ya existe. No se pudo registrar")
                     break
-                elif user["email"] == new_json_user["email"]:
+                elif user["_User__email"] == new_json_user["_User__email"]:
                     already_exist = True
                     print("Lo sentimos, el email ingresado ya se encuentra en uso. No se pudo registrar")
                     break
@@ -55,9 +54,45 @@ class ConfigFile:
             favorites = json.load(file)
         return favorites
 
+    @staticmethod
+    def get_user(id):
+        users = ConfigFile.get_users()
+        for user in users:
+            if user["_User__id"] == id:
+                return user
 
-    def get_info_user(self, fileName: str):
-        pass
+    @staticmethod
+    def modify_user(json_user, id, key):
+        i = 0
+        with open(ConfigFile.USER_PATH, 'r+') as file:
+            users = json.load(file)
+            if key == "user_name":
+                for user in users:
+                    if user["_User__user_name"] == json_user["_User__user_name"]:
+                        print("Lo sentimos, el nombre de usuario ingresado ya existe. No se pudo modificar")
+                        return False
+                    elif user["_User__id"] == id:
+                        index = i
+                    i = i + 1
+            elif key == "email":
+                for user in users:
+                    if user["_User__email"] == json_user["_User__email"]:
+                        print("Lo sentimos, el email ingresado ya se encuentra en uso. No se pudo modificar")
+                        return False
+                    elif user["_User__id"] == id:
+                        index = i
+                    i = i + 1
+            else:
+                for user in users:
+                    if user["_User__id"] == id:
+                        index = i
+                    i = i + 1
+            users[index] = json_user
+            file.seek(0)
+            json.dump(users, file, indent=4)
+            print("Felicidades, se modifico existosamente")
+            return True
+
 
     def save_info_auto(self, filename):
         pass

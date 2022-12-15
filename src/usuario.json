@@ -1,34 +1,18 @@
 [
     {
-        "id": "eff50488-6186-11ed-92a0-9c29763415fb",
-        "first_name": "b",
-        "last_name": "b",
-        "user_name": "b",
-        "email": "b",
-        "password": "b"
+        "_User__id": "a49f3a2c-7c34-11ed-8466-9c29763415fb",
+        "_User__first_name": "a",
+        "_User__last_name": "a",
+        "_User__user_name": "a",
+        "_User__password": "b",
+        "_User__email": "a"
     },
     {
-        "id": "fba2e2e8-6186-11ed-83bd-9c29763415fb",
-        "first_name": "v",
-        "last_name": "v",
-        "user_name": "v",
-        "email": "v",
-        "password": "v"
-    },
-    {
-        "id": "b582f168-618d-11ed-ad15-20cf305eecd0",
-        "first_name": "Rodrigo Estefano",
-        "last_name": "Davila Vasquez",
-        "user_name": "rodrigo123",
-        "email": "rodrigo@gmail.com",
-        "password": "123456"
-    },
-    {
-        "id": "e7699582-7b3e-11ed-af9b-d43d7e64b297",
-        "first_name": "diego",
-        "last_name": "alvarez",
-        "user_name": "diegogo",
-        "email": "diego@gmail.com",
-        "password": "200211"
+        "_User__id": "d2c5902e-7c34-11ed-87da-9c29763415fb",
+        "_User__first_name": "b",
+        "_User__last_name": "b",
+        "_User__user_name": "z",
+        "_User__password": "b",
+        "_User__email": "b"
     }
 ]

@@ -10,8 +10,9 @@ def menu():
         print("3. Salir")
         option = int(input("Ingrese una opcion: "))
         if option == 1:
-            if User.login() == True:
-                sub_menu()
+            user_id = User.login()
+            if user_id is not False:
+                sub_menu(user_id)
             else:
                 print("No existe el usuario")
         elif option == 2:
@@ -26,7 +27,8 @@ def menu():
             print("Esa opcion no existe, intentelo de nuevo")
             # input("Presione Enter para continuar")
 
-def sub_menu():
+
+def sub_menu(user_id):
     while True:
         print("Auto-Scraping FISI")
         print("==================")
@@ -34,7 +36,8 @@ def sub_menu():
         print("2. Realizar Busqueda Kavak")  # change
         print("3. Realizar Busqueda en todas las tiendas")
         print("4. Mis favoritos")
-        print("5. Cerrar Sesion")
+        print("5. Modificar datos")
+        print("6. Cerrar Sesion")
 
         option = int(input("Ingrese una opcion: "))
         if option == 1:
@@ -110,6 +113,10 @@ def sub_menu():
                 print(fav['price'])
                 print(fav['url'])
         elif option == 5:
+            user = ConfigFile.get_user(user_id)
+            user = User(user["_User__id"], user["_User__first_name"], user["_User__last_name"], user["_User__user_name"], user["_User__email"], user["_User__password"])
+            user.modify_data()
+        elif option == 6:
             print("Cerrando sesión...")
             # input("Presione Enter para continuar")
             break
