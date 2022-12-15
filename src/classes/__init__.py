@@ -6,3 +6,4 @@ from .search_kavak_2 import SearchKavak2
 from .user import User
 from .favorite import Favorite
 from .config_file import ConfigFile
+from .search_autopia import SearchAutopia

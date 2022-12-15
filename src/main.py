@@ -34,10 +34,11 @@ def sub_menu(user_id):
         print("==================")
         print("1. Realizar Busqueda Neoauto")  # change
         print("2. Realizar Busqueda Kavak")  # change
-        print("3. Realizar Busqueda en todas las tiendas")
-        print("4. Mis favoritos")
-        print("5. Modificar datos")
-        print("6. Cerrar Sesion")
+        print("3. Realizar Busqueda Autopia")
+        print("4. Realizar Busqueda en todas las tiendas")
+        print("5. Mis favoritos")
+        print("6. Modificar datos")
+        print("7. Cerrar Sesion")
 
         option = int(input("Ingrese una opcion: "))
         if option == 1:
@@ -81,8 +82,20 @@ def sub_menu(user_id):
             if answer == 's' or answer == 'S':
                 id = int(input('Ingrese el id del auto: '))
                 autos[id-1].add_favorite()
-
         elif option == 3:
+            print("Ingrese los datos de su auto: ")
+            brand = input("Marca: ")
+            brand = brand.replace(' ', '%20')  # para formato autopia
+            model = input("Modelo: ")
+            from_year = int(input("Anio inicial: "))
+            until_year = int(input("Anio final: "))
+            quantity = int(input("Cantidad de resultados por buscador: "))
+            search = SearchAutopia(brand, model, from_year, until_year, quantity)
+            autos = search.get_autos()
+            for car in autos:
+                print(f"Marca: {car.get_brand()}\n Modelo: {car.get_model()}\n Anio: {car.get_year()} \n"
+                      f" Precio: {car.get_price()} \n url: {car.get_url()}")
+        elif option == 4:
             autos = []
             print("Ingrese los datos de su auto: ")
             brand = input("Marca: ")
@@ -103,7 +116,7 @@ def sub_menu(user_id):
             if answer == 's' or answer == 'S':
                 id = int(input('Ingrese el id del auto: '))
                 autos[id - 1].add_favorite()
-        elif option == 4:
+        elif option == 5:
             print("Favoritos:")
             favorites = ConfigFile.get_favorites()
             for fav in favorites:
@@ -112,11 +125,11 @@ def sub_menu(user_id):
                 print(fav['year'])
                 print(fav['price'])
                 print(fav['url'])
-        elif option == 5:
+        elif option == 6:
             user = ConfigFile.get_user(user_id)
             user = User(user["_User__id"], user["_User__first_name"], user["_User__last_name"], user["_User__user_name"], user["_User__email"], user["_User__password"])
             user.modify_data()
-        elif option == 6:
+        elif option == 7:
             print("Cerrando sesión...")
             # input("Presione Enter para continuar")
             break
