@@ -24,10 +24,10 @@ class SearchKavak(Search):
         self.__driver.get(self.__site)
         try:
             if self.__verify_brand() is False:
-                print('No se encontro la marca buscada')
+                print('No se encontro la marca buscada en Kavak')
                 return False
         except:
-            print('No se encontro el modelo buscado')
+            print('No se encontro el modelo buscada en Kavak')
             return False
 
     def __get_url(self):
@@ -75,8 +75,8 @@ class SearchKavak(Search):
                     self.autos.append(auto)
                 i += 1
             self.autos.sort(key=lambda p: p.get_price())
-            correct_list = self.__split_list(self.autos, self._quantity)
-            return correct_list
+            return self.__split_list(self.autos, self._quantity)
+
 
     def __get_site_fixed(self, model: str):
         if ' ' in model:
