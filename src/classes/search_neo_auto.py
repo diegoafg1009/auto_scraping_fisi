@@ -19,15 +19,17 @@ class SearchNeoAuto(Search):
         self.autos = []
 
     def __filter_by_brand(self):
+        self._brand = self._brand.lower()
         brand = WebDriverWait(self.__driver, 5).until(
             ec.presence_of_element_located(
-                (By.XPATH, f"//select[@class = 'select_brand']/option[@value='{self._brand}']")))
+                (By.XPATH, f"//select[@class = 'select_brand']/option[@value='{self._brand.replace(' ','-')}']")))
         brand.click()
 
     def __filter_by_model(self):
+        self._model = self._model.lower()
         model = WebDriverWait(self.__driver, 5).until(
             ec.presence_of_element_located(
-                (By.XPATH, f"//select[@class = 'select_model']//option[@value = '{self._model}']")))
+                (By.XPATH, f"//select[@class = 'select_model']//option[@value = '{self._model.replace(' ','-')}']")))
         model.click()
 
     def __filter_by_years(self):
