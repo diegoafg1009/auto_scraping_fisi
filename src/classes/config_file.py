@@ -1,8 +1,9 @@
 import json
 
+
 class ConfigFile:
-    USER_PATH = "usuario.json"
-    FAVORITE_PATH = "favoritos.json"
+    USER_PATH = "data_persistence/usuario.json"
+    FAVORITE_PATH = "data_persistence/favoritos.json"
 
     @staticmethod
     def save_user(new_json_user):
@@ -93,11 +94,5 @@ class ConfigFile:
             print("Felicidades, se modifico existosamente")
             return True
 
-
-    def save_info_auto(self, filename):
-        pass
-
-    def get_info_auto(self, fileName):
-        pass
     
     

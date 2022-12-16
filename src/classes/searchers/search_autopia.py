@@ -1,5 +1,5 @@
-from .search import Search
-from .auto import Auto
+from src.classes.searchers import Search
+from src.classes.auto import Auto
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -24,7 +24,7 @@ class SearchAutopia(Search):
 
     def get_autos(self):
         print(self.__site)
-        container = self.__driver.find_element(By.XPATH, value='//div[@class="search-results"]')
+        container = self.__driver.find_element(By.XPATH, value='//div[@class="searchers-results"]')
         cars = container.find_elements(By.XPATH, value='//div[@class="car-card"]')
 
         for car in cars:

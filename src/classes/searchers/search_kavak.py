@@ -1,5 +1,5 @@
-from .auto import Auto
-from .search import Search
+from src.classes.auto import Auto
+from src.classes.searchers import Search
 
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
