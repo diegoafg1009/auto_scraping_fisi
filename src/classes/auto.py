@@ -25,7 +25,7 @@ class Auto:
     def get_url(self):
         return self.__url
 
-    def add_favorite(self):
+    def add_favorite(self, user_id):
         id = str(uuid.uuid1())
         brand = str(self.__brand)
         model = str(self.__model)
@@ -33,7 +33,7 @@ class Auto:
         price = self.__price
         url = str(self.__url)
         new_favorite = {"id": id, "brand": brand, "model": model, "year": year, "price": price, "url": url}
-        ConfigFile.save_favorite(new_favorite)
+        ConfigFile.save_favorite(new_favorite, user_id)
 
 
 

@@ -1,0 +1,18 @@
+[
+    {
+        "user_id": "a49f3a2c-7c34-11ed-8466-9c29763415fb",
+        "favorite_id": "e03f90a5-7b68-11ed-b8f7-d43d7e64b297"
+    },
+    {
+        "user_id": "a49f3a2c-7c34-11ed-8466-9c29763415fb",
+        "favorite_id": "259808bd-7b6b-11ed-b4a0-d43d7e64b297"
+    },
+    {
+        "user_id": "d2c5902e-7c34-11ed-87da-9c29763415fb",
+        "favorite_id": "d5d5958a-7b6c-11ed-95c4-d43d7e64b297"
+    },
+    {
+        "user_id": "d2c5902e-7c34-11ed-87da-9c29763415fb",
+        "favorite_id": "e03f90a5-7b68-11ed-b8f7-d43d7e64b297"
+    }
+]

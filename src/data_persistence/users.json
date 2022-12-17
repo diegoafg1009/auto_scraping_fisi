@@ -14,5 +14,13 @@
         "_User__user_name": "z",
         "_User__password": "b",
         "_User__email": "b"
+    },
+    {
+        "_User__id": "27853f8e-7dc5-11ed-a7ab-9c29763415fb",
+        "_User__first_name": "test",
+        "_User__last_name": "test",
+        "_User__user_name": "test",
+        "_User__email": "test@gmail.com",
+        "_User__password": "test"
     }
 ]

@@ -82,24 +82,27 @@ def show_search_results(autos: list):
         print("----------------")
 
 
-def show_option_add_favorite(autos: list):
+def show_option_add_favorite(autos: list, user_id):
     if autos is not None:
         answer = input("¿Desea agregar un auto a sus favoritos?(s/n): ")
         if answer == 's' or answer == 'S':
             id = int(input('Ingrese el id del auto: '))
-            autos[id - 1].add_favorite()
+            autos[id - 1].add_favorite(user_id)
 
 
-def show_favorites():
-    print("MIS FAVORITOS:")
-    favorites = ConfigFile.get_favorites()
-    for fav in favorites:
-        print("Marca:", fav['brand'])
-        print("Modelo:", fav['model'])
-        print("Anio:", fav['year'])
-        print("Precio:", fav['price'])
-        print("Link:", fav['url'])
-        print("-------------------------")
+def show_favorites(user_id):
+    favorites = ConfigFile.get_favorites(user_id)
+    if len(favorites) == 0:
+        print("Usted aun no tiene autos favoritos agregados.")
+    else:
+        print("MIS FAVORITOS:")
+        for fav in favorites:
+            print("Marca:", fav['brand'])
+            print("Modelo:", fav['model'])
+            print("Anio:", fav['year'])
+            print("Precio:", fav['price'])
+            print("Link:", fav['url'])
+            print("-------------------------")
 
 
 def menu():
@@ -126,25 +129,25 @@ def sub_menu(user_id):
         if option == 1:
             cars_neo_auto = search_neo_auto()
             show_search_results(cars_neo_auto)
-            show_option_add_favorite(cars_neo_auto)
+            show_option_add_favorite(cars_neo_auto, user_id)
 
         elif option == 2:
             cars_kavak = search_kavak()
             show_search_results(cars_kavak)
-            show_option_add_favorite(cars_kavak)
+            show_option_add_favorite(cars_kavak, user_id)
 
         elif option == 3:
             cars_autopia = search_autopia()
             show_search_results(cars_autopia)
-            show_option_add_favorite(cars_autopia)
+            show_option_add_favorite(cars_autopia, user_id)
 
         elif option == 4:
             cars_all_stores = search_all_stores()
             show_search_results(cars_all_stores)
-            show_option_add_favorite(cars_all_stores)
+            show_option_add_favorite(cars_all_stores, user_id)
 
         elif option == 5:
-            show_favorites()
+            show_favorites(user_id)
 
         elif option == 6:
             user = ConfigFile.get_user(user_id)
