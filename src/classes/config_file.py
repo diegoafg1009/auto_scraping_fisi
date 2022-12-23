@@ -45,7 +45,7 @@ class ConfigFile:
             users_favorites = json.load(users_favorites_file)
             if not already_exist_in_favorites:
                 users_favorites.append({"user_id": str(user_id), "favorite_id": new_json_favorite["id"]})
-                users_favorites.seek(0)
+                users_favorites_file.seek(0)
                 json.dump(users_favorites, users_favorites_file, indent=4)
                 print("Se agrego existosamente el auto a sus favoritos")
             else:
