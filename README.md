@@ -7,7 +7,11 @@
 - Tupac Agüero, Kevin [@Jonathan101120](https://github.com/Jonathan101120)
 - Villanueva Chirito, Mariano [@Marianoavc](https://github.com/Marianoavc)
 
-## Nuevas Funcionalidades:
+## Nuevas funcionalidades aun por implementar:
+1. Agregar Historial
+2. Autopia que funcione con Headless
+
+## Funcionalidades nuevas ya implementadas:
 1. Agregar a favoritos:
       - Con esta funcionalidad el usuario podrá guardar los datos de un auto que le haya llamado la atención al momento de realizar su búsqueda, estos autos favoritos a su vez podrán ser visualizados en el menú que aparece luego de iniciar sesión.
 2. Modificar datos del usuario:
