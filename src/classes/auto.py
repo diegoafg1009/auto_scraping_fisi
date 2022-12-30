@@ -35,5 +35,15 @@ class Auto:
         new_favorite = {"id": id, "brand": brand, "model": model, "year": year, "price": price, "url": url}
         ConfigFile.save_favorite(new_favorite, user_id)
 
+    def add_historial(self, user_id):
+            brand = str(self.__brand)
+            model = str(self.__model)
+            year = self.__year
+            price = self.__price
+            url = str(self.__url)
+            new_historial = {"brand": brand, "model": model, "year": year, "price": price, "url": url}
+            ConfigFile.save_historial(new_historial, user_id)
+
+
 
 
