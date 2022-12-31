@@ -5,6 +5,7 @@ class ConfigFile:
     USER_PATH = "data_persistence/users.json"
     FAVORITE_PATH = "data_persistence/favorites.json"
     USERS_FAVORITES_PATH = "data_persistence/users_favorites.json"
+    HISTORIAL_PATH = "data_persistence/historial.json"
 
     @staticmethod
     def save_user(new_json_user):
@@ -60,6 +61,17 @@ class ConfigFile:
                     json.dump(users_favorites, users_favorites_file, indent=4)
                     print("Se agrego existosamente el auto a sus favoritos")
 
+    def save_historial(new_historial, user_id):
+        with open(ConfigFile.HISTORIAL_PATH, "r+") as historial_file:
+            historial = json.load(historial_file)
+            historial.append(new_historial)
+            historial_file.seek(0)
+            json.dump(historial, historial_file, indent=4)
+            """
+                historial_file.seek(0)
+                json.dump(historial, historial_file, indent=4)
+                """
+
     @staticmethod
     def get_users():
         with open(ConfigFile.USER_PATH, 'r') as file:
@@ -95,6 +107,12 @@ class ConfigFile:
                 return user
 
     @staticmethod
+    def get_historial(user_id):
+        with open(ConfigFile.HISTORIAL_PATH, "r") as historial_file:
+            historial = json.load(historial_file)
+        return historial
+
+    @staticmethod
     def modify_user(json_user, id, key):
         i = 0
         with open(ConfigFile.USER_PATH, 'r+') as file:
@@ -125,6 +143,3 @@ class ConfigFile:
             json.dump(users, file, indent=4)
             print("Felicidades, se modifico existosamente")
             return True
-
-    
-    

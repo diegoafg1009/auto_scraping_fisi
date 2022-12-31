@@ -20,8 +20,6 @@ class Search(ABC):
     def get_autos(self):
         pass
 
-
-
     def get_path(self):
         driver_path = Path().absolute().parent
         driver_path = Path(driver_path, "driver_path.txt")

@@ -19,7 +19,8 @@ def show_sub_menu():
     print("4. Realizar busqueda en todas las tiendas")
     print("5. Mis favoritos")
     print("6. Modificar datos")
-    print("7. Cerrar sesion")
+    print("7. Mostrar el historial")
+    print("8. Cerrar sesion")
     return int(input("Ingrese una opcion: "))
 
 
@@ -105,6 +106,24 @@ def show_favorites(user_id):
             print("-------------------------")
 
 
+def show_add_historial(autos: list, user_id):
+    if autos is not None:
+        for i in range(0,len(autos)):
+            autos[i].add_historial(user_id)
+
+
+def show_historial(user_id):
+    historial = ConfigFile.get_historial(user_id)
+    print("EL HISTORIAL ES EL SIGUIENTE: ")
+    for hist in historial:
+        print("Marca:", hist['brand'])
+        print("Modelo:", hist['model'])
+        print("Anio:", hist['year'])
+        print("Precio:", hist['price'])
+        print("Link:", hist['url'])
+        print("-------------------------")
+
+
 def menu():
     while True:
         option = show_menu_options()
@@ -130,11 +149,13 @@ def sub_menu(user_id):
             cars_neo_auto = search_neo_auto()
             show_search_results(cars_neo_auto)
             show_option_add_favorite(cars_neo_auto, user_id)
+            show_add_historial(cars_neo_auto, user_id)
 
         elif option == 2:
             cars_kavak = search_kavak()
             show_search_results(cars_kavak)
             show_option_add_favorite(cars_kavak, user_id)
+            show_add_historial(cars_kavak, user_id)
 
         elif option == 3:
             cars_autopia = search_autopia()
@@ -155,6 +176,9 @@ def sub_menu(user_id):
             user.modify_data()
 
         elif option == 7:
+            show_historial(user_id)
+
+        elif option == 8:
             print("Cerrando sesión...")
             break
         else:

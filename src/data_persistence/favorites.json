@@ -30,5 +30,21 @@
         "year": 2014,
         "price": "US$ 15,000",
         "url": "https://neoauto.com/auto/usado/audi-a1-2014-1690217"
+    },
+    {
+        "id": "9ac4e62b-8277-11ed-a796-088fc31fd79c",
+        "brand": "toyota",
+        "model": "auris",
+        "year": 2012,
+        "price": "US$ 12,600",
+        "url": "https://neoauto.com/auto/usado/toyota-auris-2012-1670115"
+    },
+    {
+        "id": "cebb4718-84b9-11ed-86df-088fc31fd79c",
+        "brand": "toyota",
+        "model": "yaris",
+        "year": 2010,
+        "price": "US$ 7,000",
+        "url": "https://neoauto.com/auto/usado/toyota-yaris-2010-1689171"
     }
 ]
